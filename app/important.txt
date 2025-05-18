@@ -1,0 +1,49 @@
+
+
+
+
+
+composer create-project laravel/laravel laravel-react-app
+cd laravel-react-app
+
+
+composer require laravel/breeze --dev
+php artisan breeze:install react
+npm install && npm run dev
+php artisan migrate
+
+
+
+php artisan serve
+npm run dev
+
+
+http://127.0.0.1:8000
+
+
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=slot_result_database
+DB_USERNAME=root
+DB_PASSWORD=clickerz123
+
+php artisan games:predict-color
+
+INSERT INTO games (name, image_url, created_at, updated_at)
+VALUES
+('Super Ace', 'https://d1b77e2r6mid5h.cloudfront.net/games/9d2c1d79_9d2c1d79_47dcbbbd_217', NOW(), NOW()),
+('Luck Streak 1000', 'https://d1b77e2r6mid5h.cloudfront.net/games/b6ed46aa_b6ed46aa_18e1cd26_217', NOW(), NOW()),
+('RIP City', 'https://d1b77e2r6mid5h.cloudfront.net/games/9b857f3c_9b857f3c_1d998517_217', NOW(), NOW()),
+('Piggy  Tap', 'https://d1b77e2r6mid5h.cloudfront.net/games/bb2f01fc_bb2f01fc_cb0bd36b_217', NOW(), NOW()),
+('Hell Hot', 'https://d1b77e2r6mid5h.cloudfront.net/games/e902876f_e902876f_f4232692_217', NOW(), NOW()),
+('Incan Wonders', 'https://d1b77e2r6mid5h.cloudfront.net/games/7b5cf788_7b5cf788_18464d69_217', NOW(), NOW()),
+('Book of Flames', 'https://d1b77e2r6mid5h.cloudfront.net/games/b853ac75_b853ac75_1a11dfdd_217', NOW(), NOW()),
+('3 Nets For Catch', 'https://d1b77e2r6mid5h.cloudfront.net/games/d585b3e6_d585b3e6_f49b023c_217', NOW(), NOW()),
+('Outlaws Redemption', 'https://d1b77e2r6mid5h.cloudfront.net/games/bfe64021_bfe64021_d8f4444e_217', NOW(), NOW()),
+('Jungle Wealth', 'https://d1b77e2r6mid5h.cloudfront.net/games/8b72cf2b_8b72cf2b_0beaf203_217', NOW(), NOW()),
+('1 Reel Egyptian', 'https://d1b77e2r6mid5h.cloudfront.net/games/8c748976_8c748976_f2d46ab2_217', NOW(), NOW()),
+('Lucky Lu', 'https://d1b77e2r6mid5h.cloudfront.net/games/747ca604_747ca604_1464db03_217', NOW(), NOW());
+
+https://chatgpt.com/share/6829f2b2-1f64-8001-a398-af423a6dd85a
