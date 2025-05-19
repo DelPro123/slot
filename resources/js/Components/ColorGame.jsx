@@ -3,33 +3,70 @@ import React, { useEffect, useState } from 'react';
 
 function ColorGame() {
   const [games, setGames] = useState([]);
+  const [prediction, setPrediction] = useState(null);
 
   useEffect(() => {
     axios.get('http://127.0.0.1:8000/api/latest-predicted-games')
-      .then(res => setGames(res.data))
+      .then(res => {
+        setGames(res.data);
+        if (res.data.length > 0) {
+          setPrediction({
+            color: res.data[0].color,
+            timestamp: res.data[0].created_at, // Adjust if your timestamp field is different
+          });
+        }
+      })
       .catch(err => console.error('Error fetching games:', err));
   }, []);
 
-  if (games.length === 0) return <p>No prediction yet.</p>;
+  if (!prediction) return <p className="p-4 text-center">No prediction yet.</p>;
 
-  const color = games[0]?.color;
-  const colorClass = {
-    red: 'border-red-400 bg-red-100',
-    green: 'border-green-400 bg-green-100',
-    orange: 'border-orange-400 bg-orange-100'
-  }[color];
+  const renderGames = (color) => (
+    <div className={`flex-1 p-4 rounded-xl ${getBgColor(color)} min-h-screen`}>
+      <h2 className="text-center text-2xl font-bold mb-2">{capitalize(color)}</h2>
+      {prediction.color === color && (
+        <>
+          <p className="text-center text-sm mb-4">
+            Prediction at: {new Date(prediction.timestamp).toLocaleString()} ({capitalize(color)})
+          </p>
+          {games.map(({ game }) => (
+            <div
+              key={game.id}
+              className="bg-white rounded-full p-2 mb-2 flex items-center shadow"
+            >
+              <img
+                src={game.image_url}
+                alt={game.name}
+                className="w-8 h-8 rounded-full mr-2 object-cover"
+              />
+              <span className="text-sm font-semibold">{game.name}</span>
+            </div>
+          ))}
+        </>
+      )}
+    </div>
+  );
+
+  const getBgColor = (color) => {
+    switch (color) {
+      case 'red':
+        return 'bg-red-400';
+      case 'green':
+        return 'bg-green-400';
+      case 'orange':
+        return 'bg-orange-400';
+      default:
+        return '';
+    }
+  };
+
+  const capitalize = (text) => text.charAt(0).toUpperCase() + text.slice(1);
 
   return (
-    <div className="p-4">
-      <h2 className="text-xl font-bold mb-4 capitalize">{color} Prediction</h2>
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-        {games.map(({ game }) => (
-          <div key={game.id} className={`rounded-xl p-2 text-center border ${colorClass}`}>
-            <img src={game.image_url} alt={game.name} className="w-full h-32 object-cover rounded" />
-            <p className="text-sm mt-2">{game.name}</p>
-          </div>
-        ))}
-      </div>
+    <div className="flex gap-4 p-4">
+      {renderGames('red')}
+      {renderGames('green')}
+      {renderGames('orange')}
     </div>
   );
 }
