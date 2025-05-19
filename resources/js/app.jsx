@@ -8,10 +8,23 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.createRoot(document.getElementById('app')).render(
   <React.StrictMode>
-    <ColorGame/>
-     <GamesList/>
-    <PredictionHistory/>
 
+    <div className='container-fluid'>
+        <div className='row'>
+            <div className='col-9 d-flex d-inline'>
+                <ColorGame/>
+            </div>
+            <div className='col-3'>
+                <PredictionHistory/>
+            </div>
+        </div>
+        <h2>Games</h2>
+        <div className='row'>
+            <GamesList/>
+        </div>
+
+
+    </div>
 
   </React.StrictMode>,
 )

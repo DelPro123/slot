@@ -23,9 +23,9 @@ function GamesList() {
   if (error) return <div className="p-4 text-red-500">Error: {error}</div>;
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4">
+    <div className="row row-cols-5">
       {games.map((game) => (
-        <div key={game.id} className="bg-white rounded-xl shadow p-2 text-center">
+        <div key={game.id} className="bg-white rounded-xl shadow  text-center col">
           <img
             src={game.image_url || '/placeholder-game.png'}
             alt={game.name}

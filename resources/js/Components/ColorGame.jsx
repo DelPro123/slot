@@ -32,12 +32,13 @@ function ColorGame() {
           {games.map(({ game }) => (
             <div
               key={game.id}
-              className="bg-white rounded-full p-2 mb-2 flex items-center shadow"
+              className="d-flex d-inline border row-gap-2"
             >
+
               <img
                 src={game.image_url}
                 alt={game.name}
-                className="w-8 h-8 rounded-full mr-2 object-cover"
+                className="image-rounded"
               />
               <span className="text-sm font-semibold">{game.name}</span>
             </div>
@@ -63,10 +64,16 @@ function ColorGame() {
   const capitalize = (text) => text.charAt(0).toUpperCase() + text.slice(1);
 
   return (
-    <div className="flex gap-4 p-4">
-      {renderGames('red')}
-      {renderGames('green')}
-      {renderGames('orange')}
+    <div className="row">
+        <div className='col-4'>
+            {renderGames('red')}
+        </div>
+        <div className='col-4'>
+            {renderGames('green')}
+        </div>
+        <div className='col-4'>
+            {renderGames('orange')}
+        </div>
     </div>
   );
 }
