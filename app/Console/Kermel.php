@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
 
     protected function schedule(Schedule $schedule)
     {
-      $schedule->command('games:predict-color')->dailyAt('01:00')->timezone('Europe/London');
-      $schedule->command('games:predict-color')->dailyAt('13:00')->timezone('Europe/London'); // 1PM
+      $schedule->command('games:predict-color')
+        ->timezone('Europe/London')
+        ->twiceDaily(6, 18); // 6 AM and 6 PM UK time
     }
 }

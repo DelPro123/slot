@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Game;
 use App\Models\GamePrediction;
-
+use App\Http\Controllers\GamePredictionController;
 
 
 
@@ -37,3 +37,6 @@ Route::get('/prediction-history', function () {
         ->get()
         ->groupBy('predicted_at');
 });
+
+Route::get('/next-prediction-time', [GamePredictionController::class, 'nextPredictionTime']);
+
