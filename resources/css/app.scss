@@ -1,1 +1,27 @@
 @use 'colorgame';
+@use 'gamelist';
+
+$primary-color: #0D1121;
+$font-color: #ffffff;
+$h1-size: 63px;
+$h2-size: 43px;
+$h3-size: 32px;
+$text-size: 16px;
+
+body{
+    background-color: $primary-color;
+    padding: 20px;
+}
+
+h1{
+    color: #ffb200;
+    font-size: $h1-size;
+}
+h2{
+    color: #ffffff;
+    font-size: $h2-size;
+}
+h3{
+     color: #0D1121;
+    font-size: $h2-size;
+}

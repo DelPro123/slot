@@ -3,21 +3,30 @@ import axios from 'axios';
 
 const PredictionHistory = () => {
   const [predictions, setPredictions] = useState([]);
+  const [lastUpdated, setLastUpdated] = useState(null);
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/api/prediction-history')
-      .then(res => {
-        if (res.data && typeof res.data === 'object') {
-          const grouped = Object.entries(res.data);
-          setPredictions(grouped);
-        } else {
+    const fetchHistory = () => {
+      axios.get('http://127.0.0.1:8000/api/prediction-history')
+        .then(res => {
+          if (res.data && typeof res.data === 'object') {
+            const grouped = Object.entries(res.data);
+            setPredictions(grouped);
+            setLastUpdated(new Date());
+          } else {
+            setPredictions([]);
+          }
+        })
+        .catch(err => {
+          console.error("Error fetching history:", err);
           setPredictions([]);
-        }
-      })
-      .catch(err => {
-        console.error("Error fetching history:", err);
-        setPredictions([]);
-      });
+        });
+    };
+
+    fetchHistory(); // Load once
+    const interval = setInterval(fetchHistory, 5000); // Refresh every 5 seconds
+
+    return () => clearInterval(interval); // Cleanup
   }, []);
 
   if (!Array.isArray(predictions) || predictions.length === 0) {
@@ -26,9 +35,11 @@ const PredictionHistory = () => {
 
   return (
     <div className="p-3">
-      <h2 className="text-center fw-bold mb-3">History</h2>
+      <h2 className="text-center fw-bold mb-3">Prediction History</h2>
+      <p className="text-muted small text-end">
+        Last updated: {lastUpdated?.toLocaleTimeString()}
+      </p>
 
-      {/* Scrollable container */}
       <div
         className="border rounded p-3 overflow-auto"
         style={{ maxHeight: '600px' }}
@@ -55,7 +66,9 @@ const PredictionHistory = () => {
                       className="img-fluid rounded mb-2"
                       style={{ height: '80px', objectFit: 'cover' }}
                     />
-                    <p className="fw-medium text-truncate">{prediction.game.name}</p>
+                    <p className="fw-medium text-truncate">
+                      {prediction.game.name}
+                    </p>
                   </div>
                 ))}
               </div>

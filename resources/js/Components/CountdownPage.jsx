@@ -41,7 +41,18 @@ function CountdownTimer() {
     return () => clearInterval(interval);
   }, [targetTime]);
 
-  return <span>{timeLeft || 'Loading...'}</span>;
+  return (
+    <div className='row d-flex align-items-center'>
+        <h1>Chinchin Casino Prediction</h1>
+        <div className='d-flex d-inline'>
+         <h2>Next Prediction:
+         <span>{timeLeft || 'Loading...'}</span>
+         </h2>
+        </div>
+          
+    </div>
+   
+  );
 }
 
 export default CountdownTimer;

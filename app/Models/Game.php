@@ -8,6 +8,6 @@ use Illuminate\Database\Schema\Blueprint;
 
 class Game extends Model
 {
-   protected $fillable = ['name', 'image_url'];
+   protected $fillable = ['provider','name', 'image_url'];
 
 }

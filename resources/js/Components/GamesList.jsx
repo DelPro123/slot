@@ -31,6 +31,7 @@ function GamesList() {
             alt={game.name}
             className="w-full h-32 object-cover rounded-md mb-2"
           />
+           <p className="text-sm font-semibold">{game.provider}</p>
           <p className="text-sm font-semibold">{game.name}</p>
         </div>
       ))}

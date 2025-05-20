@@ -5,8 +5,8 @@ import ColorGame from './Components/ColorGame'
 import PredictionHistory from './Components/PredictionHistory'
 import CountdownPage from './Components/CountdownPage'
 import { Helmet } from 'react-helmet'
-import '../css/app.scss'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../css/app.scss';
 
 
 ReactDOM.createRoot(document.getElementById('app')).render(
@@ -22,7 +22,7 @@ ReactDOM.createRoot(document.getElementById('app')).render(
             <CountdownPage/>
         </div>
         <div className='row'>
-            <div className='col-9 d-flex d-inline'>
+            <div className='col'>
                 <ColorGame/>
             </div>
             <div className='col-3'>

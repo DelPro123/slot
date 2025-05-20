@@ -9,6 +9,7 @@ return new class extends Migration {
     {
         Schema::create('games', function (Blueprint $table) {
             $table->id();
+            $table->string('provider');
             $table->string('name');
             $table->string('image_url');
             $table->timestamps();
