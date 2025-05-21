@@ -7,7 +7,7 @@ const PredictionHistory = () => {
 
   useEffect(() => {
     const fetchHistory = () => {
-      axios.get('http://127.0.0.1:8000/api/prediction-history')
+      axios.get('/api/prediction-history')
         .then(res => {
           if (res.data && typeof res.data === 'object') {
             const grouped = Object.entries(res.data)

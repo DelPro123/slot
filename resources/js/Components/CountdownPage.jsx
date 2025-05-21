@@ -9,7 +9,7 @@ function CountdownTimer() {
 
   useEffect(() => {
     // Fetch next prediction time from API once on mount
-    axios.get('http://127.0.0.1:8000/api/next-prediction-time')
+    axios.get('/api/next-prediction-time')
       .then(res => {
         setTargetTime(new Date(res.data.next_prediction_at));
       })

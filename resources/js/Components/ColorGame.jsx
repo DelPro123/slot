@@ -7,7 +7,7 @@ function ColorGame() {
   const [predictionTime, setPredictionTime] = useState(null);
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/api/latest-predicted-games')
+    axios.get('/api/latest-predicted-games')
       .then(res => {
         const grouped = { red: [], green: [], orange: [] };
         res.data.forEach(item => {
