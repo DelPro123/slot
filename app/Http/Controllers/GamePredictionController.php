@@ -12,15 +12,21 @@ class GamePredictionController extends Controller
         // Get now in UK timezone
         $ukNow = Carbon::now('Europe/London');
 
-        // Find next 6AM or 6PM slot
-        $hour = $ukNow->hour;
+        $predictionHours = [1, 16, 20]; // 1AM, 4PM, 8PM UK time
+        $currentHour = $ukNow->hour;
 
-        if ($hour < 6) {
-            $nextPrediction = $ukNow->copy()->startOfDay()->addHours(6);
-        } elseif ($hour < 18) {
-            $nextPrediction = $ukNow->copy()->startOfDay()->addHours(18);
-        } else {
-            $nextPrediction = $ukNow->copy()->addDay()->startOfDay()->addHours(6);
+        // Find the next prediction time slot after current hour
+        $nextPrediction = null;
+        foreach ($predictionHours as $hour) {
+            if ($currentHour < $hour) {
+                $nextPrediction = $ukNow->copy()->startOfDay()->addHours($hour);
+                break;
+            }
+        }
+
+        // If no slot left today, use the first slot next day
+        if (!$nextPrediction) {
+            $nextPrediction = $ukNow->copy()->addDay()->startOfDay()->addHours($predictionHours[0]);
         }
 
         return response()->json([

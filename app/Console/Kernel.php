@@ -9,19 +9,30 @@ use App\Console\Commands\PredictColorGame;
 class Kernel extends ConsoleKernel
 {
     protected $commands = [
-        PredictColorGame::class,  // Register the command here
+        PredictColorGame::class,
     ];
 
     protected function schedule(Schedule $schedule)
     {
-        // Schedule the command to run every minute for testing purposes
-        // Change it to twiceDaily(6, 18) for the actual schedule (6AM and 6PM)
+        // Production schedule (UK time)
         $schedule->command('games:predict-color')
             ->timezone('Europe/London')
-            ->everyMinute();  // Change this to twiceDaily(6, 18) for 6AM & 6PM
+            ->dailyAt('1:00'); // 1PM UK
 
-        // Alternatively, you can schedule it for specific time slots as needed
-        // $schedule->command('games:predict-color')->twiceDaily(6, 18); // 6AM & 6PM UK time
+        $schedule->command('games:predict-color')
+            ->timezone('Europe/London')
+            ->dailyAt('16:00'); // 4PM UK
+
+        $schedule->command('games:predict-color')
+            ->timezone('Europe/London')
+            ->dailyAt('20:00'); // 8PM UK
+
+        // // Hidden test schedule: runs every minute only in local/dev environments
+        // if (app()->environment(['local', 'development', 'testing'])) {
+        //     $schedule->command('games:predict-color')
+        //         ->timezone('Europe/London')
+        //         ->everyMinute(); // Test frequency
+        // }
     }
 
     protected function commands()

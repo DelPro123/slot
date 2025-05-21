@@ -11,7 +11,7 @@ const PredictionHistory = () => {
         .then(res => {
           if (res.data && typeof res.data === 'object') {
             const grouped = Object.entries(res.data)
-              .sort((a, b) => new Date(b[0]) - new Date(a[0])); // newest first
+              .sort((a, b) => new Date(b[0]) - new Date(a[0])); // Newest first
             setPredictions(grouped);
             setLastUpdated(new Date());
           } else {
@@ -38,7 +38,7 @@ const PredictionHistory = () => {
     <div className="p-3">
       <h2 className="text-center fw-bold mb-3">Prediction History</h2>
       <p className="text-muted small text-end">
-        Last updated: {lastUpdated?.toLocaleTimeString()}
+        Last updated: {lastUpdated?.toLocaleTimeString('en-GB', { hour12: true })}
       </p>
 
       <div className="border rounded p-3 overflow-auto" style={{ maxHeight: '600px' }}>
@@ -46,6 +46,7 @@ const PredictionHistory = () => {
           const formattedDate = new Date(timestamp).toLocaleString('en-GB', {
             dateStyle: 'short',
             timeStyle: 'short',
+            hour12: true, // Show AM/PM
           });
 
           // Group games by color
@@ -64,7 +65,7 @@ const PredictionHistory = () => {
               {Object.entries(groupedByColor).map(([color, colorGames]) => (
                 <div key={color} className="mb-3">
                   <h6 className={`fw-semibold text-${getColorClass(color)}`}>
-                    {color.toUpperCase()} 
+                    {color.toUpperCase()}
                     <span className={`badge bg-${getColorClass(color)} ms-2`}>
                       {colorGames.length} games
                     </span>

@@ -51,7 +51,7 @@ function GamesList() {
           {filteredGames.map((game) => (
             <div key={game.id} className="col affliate-link">
               <a className='underline' href='https://chinluckgames.com/wD74mscL?aff_click_id=subid&aff_id=1146'>
-                <div className="card text-center bg-transparent border-0 shadow-sm">
+                <div className="card d-flex align-items-center text-center bg-transparent border-0 shadow-sm">
                   <img
                     src={game.image_url || '/placeholder-game.png'}
                     alt={game.name}
