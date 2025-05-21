@@ -31,7 +31,7 @@ const PredictionHistory = () => {
   }, []);
 
   if (!Array.isArray(predictions) || predictions.length === 0) {
-    return <p className="p-3 text-muted">No prediction history available.</p>;
+    return <p className="p-3 text-white text-center">No prediction history available.</p>;
   }
 
   return (

@@ -66,7 +66,7 @@ function GamesList() {
             </div>
           ))}
           {filteredGames.length === 0 && (
-            <div className="text-center text-muted w-100 mt-4">No games found.</div>
+            <div className="text-center text-white w-100 mt-4">No games found.</div>
           )}
         </div>
       </div>
