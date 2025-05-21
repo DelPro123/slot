@@ -38,3 +38,79 @@ p{
 .text-black{
     color: #0D1121 !important;
 }
+
+
+
+INSERT INTO games (provider, name, image_url, created_at, updated_at)
+VALUES
+('Jili Games','Super Ace', 'https://d1b77e2r6mid5h.cloudfront.net/games/9d2c1d79_9d2c1d79_47dcbbbd_217', NOW(), NOW()),
+('Endorphina','Luck Streak 1000', 'https://d1b77e2r6mid5h.cloudfront.net/games/b6ed46aa_b6ed46aa_18e1cd26_217', NOW(), NOW()),
+('Hacksaw Gaming','RIP City', 'https://d1b77e2r6mid5h.cloudfront.net/games/9b857f3c_9b857f3c_1d998517_217', NOW(), NOW()),
+('Onlyplay','Piggy  Tap', 'https://d1b77e2r6mid5h.cloudfront.net/games/bb2f01fc_bb2f01fc_cb0bd36b_217', NOW(), NOW()),
+('Endorphina','Hell Hot', 'https://d1b77e2r6mid5h.cloudfront.net/games/e902876f_e902876f_f4232692_217', NOW(), NOW()),
+('PGSoft','Incan Wonders', 'https://d1b77e2r6mid5h.cloudfront.net/games/7b5cf788_7b5cf788_18464d69_217', NOW(), NOW()),
+('Novomatic','Book of Flames', 'https://d1b77e2r6mid5h.cloudfront.net/games/b853ac75_b853ac75_1a11dfdd_217', NOW(), NOW()),
+('Playson','3 Nets For Catch', 'https://d1b77e2r6mid5h.cloudfront.net/games/d585b3e6_d585b3e6_f49b023c_217', NOW(), NOW()),
+('Spinomenal','Outlaws Redemption', 'https://d1b77e2r6mid5h.cloudfront.net/games/bfe64021_bfe64021_d8f4444e_217', NOW(), NOW()),
+('1Spin4Win','Jungle Wealth', 'https://d1b77e2r6mid5h.cloudfront.net/games/8b72cf2b_8b72cf2b_0beaf203_217', NOW(), NOW()),
+('Spinomenal','1 Reel Egyptian', 'https://d1b77e2r6mid5h.cloudfront.net/games/8c748976_8c748976_f2d46ab2_217', NOW(), NOW()),
+('BGaming','Lucky Lu', 'https://d1b77e2r6mid5h.cloudfront.net/games/747ca604_747ca604_1464db03_217', NOW(), NOW()),
+('BGaming', 'Olympus Trueways', 'https://d1b77e2r6mid5h.cloudfront.net/games/af2b3b42_af2b3b42_8081a79a_183', NOW(), NOW()),
+('Evoplay Entertainment', 'Olympus True Ways', 'https://d1b77e2r6mid5h.cloudfront.net/games/6b4a1e01_6b4a1e01_975a737f_183', NOW(), NOW()),
+('Gaming Corps', 'Plink Ball 5000', 'https://d1b77e2r6mid5h.cloudfront.net/games/4bf9ffe0_4bf9ffe0_38ddbf7a_183', NOW(), NOW()),
+('Spinomenal', 'Wild Bandida', 'https://d1b77e2r6mid5h.cloudfront.net/games/b12ff2ca_b12ff2ca_cb6b50ad_183', NOW(), NOW()),
+('Evoplay Entertainment', 'Chained Fighters', 'https://d1b77e2r6mid5h.cloudfront.net/games/6b4a1e01_6b4a1e01_975a737f_183', NOW(), NOW()),
+('Amigo Gaming', 'Blazing Crown Dice', 'https://d1b77e2r6mid5h.cloudfront.net/games/3d653c4f_3d653c4f_daccd407_183', NOW(), NOW()),
+('Bullshark Games', 'Bamboo Riches', 'https://d1b77e2r6mid5h.cloudfront.net/games/53f9c82e_53f9c82e_3105cbff_183', NOW(), NOW()),
+('Novomatic', 'Thunder Vault: Hold & Win', 'https://d1b77e2r6mid5h.cloudfront.net/games/53f9c82e_53f9c82e_3105cbff_183', NOW(), NOW()),
+('Gaming Corps', 'Golf Champion', 'https://d1b77e2r6mid5h.cloudfront.net/games/63be6311_63be6311_cec7ef2f_183', NOW(), NOW()),
+('Mancala Gaming', 'Coin Craze Jackpot', 'https://d1b77e2r6mid5h.cloudfront.net/games/e5350eba_e5350eba_bc919726_183', NOW(), NOW()),
+('Spinomenal', 'Midnight Pack', 'https://d1b77e2r6mid5h.cloudfront.net/games/e5350eba_e5350eba_bc919726_183', NOW(), NOW()),
+('Evoplay Entertainment', 'Adrenaline Rush', 'https://d1b77e2r6mid5h.cloudfront.net/games/35844a99_35844a99_467d4cfb_183', NOW(), NOW()),
+('Evoplay Entertainment', 'Charming Ladys Boom', 'https://d1b77e2r6mid5h.cloudfront.net/games/35844a99_35844a99_467d4cfb_183', NOW(), NOW()),
+('Novomatic', 'Charming Ladys Boom', 'https://d1b77e2r6mid5h.cloudfront.net/games/7d60cea0_7d60cea0_15566279_183', NOW(), NOW()),
+('Novomatic', 'Thunder Vault: Hold & Win', 'https://d1b77e2r6mid5h.cloudfront.net/games/1b0beb91_1b0beb91_be28f770_183', NOW(), NOW()),
+('Hacksaw Gaming', 'Danny Dollar', 'https://d1b77e2r6mid5h.cloudfront.net/games/658fce51_658fce51_1cca6a28_183', NOW(), NOW()),
+('3 Oaks Gaming', '3 Super Hot Chillies', 'https://d1b77e2r6mid5h.cloudfront.net/games/658fce51_658fce51_1cca6a28_183', NOW(), NOW()),
+('Tom Horn Gaming', 'Beast Coinz', 'https://d1b77e2r6mid5h.cloudfront.net/games/3cc1c254_3cc1c254_a0c60c24_183', NOW(), NOW()),
+('Booming Games', 'Inferno Fortune Power Hit', 'https://d1b77e2r6mid5h.cloudfront.net/games/07c2f74d_07c2f74d_b164cbba_183', NOW(), NOW()),
+('Spinomenal', 'Queen Of Inferno', 'https://d1b77e2r6mid5h.cloudfront.net/games/f474ed5e_f474ed5e_7ea09da5_183', NOW(), NOW()),
+('RubyPlay', 'Zeus Rush Fever Deluxe Special Edition', 'https://d1b77e2r6mid5h.cloudfront.net/games/b042a5a7_b042a5a7_8aa901f9_183', NOW(), NOW()),
+('Fugaso', 'Bonanza Link: Midnight Train', 'https://d1b77e2r6mid5h.cloudfront.net/games/5d6fc56b_5d6fc56b_bd87f79e_183', NOW(), NOW()),
+('1Spin4Win', 'Hot Coins Fortune 10', 'https://d1b77e2r6mid5h.cloudfront.net/games/134c9876_134c9876_d3bbad5c_183', NOW(), NOW()),
+('Mascot Gaming', 'Double Roulette', 'https://d1b77e2r6mid5h.cloudfront.net/games/c832d39e_c832d39e_5eb6e0fd_183', NOW(), NOW()),
+('Mascot Gaming', 'Gunman Crash', 'https://d1b77e2r6mid5h.cloudfront.net/games/8f8ed2dc_8f8ed2dc_d38fa790_183', NOW(), NOW()),
+('BF Games', 'Chicken Madness Dice', 'https://d1b77e2r6mid5h.cloudfront.net/games/b0cc5ed1_b0cc5ed1_e631ca63_183', NOW(), NOW()),
+('BF Games', 'Joker''s Vault', 'https://d1b77e2r6mid5h.cloudfront.net/games/b536f9cd_b536f9cd_63e5d4e8_183', NOW(), NOW()),
+('BGaming', 'Blackbeard''s Bounty', 'https://d1b77e2r6mid5h.cloudfront.net/games/892d478e_892d478e_9715a490_183', NOW(), NOW()),
+('Ezugi', 'Ultimate Flip', 'https://d1b77e2r6mid5h.cloudfront.net/games/57491a96_57491a96_5042542f_183', NOW(), NOW()),
+('TaDa Gaming', 'Safari Mystery', 'https://d1b77e2r6mid5h.cloudfront.net/games/7247caee_7247caee_48411b1d_183', NOW(), NOW()),
+('NetGame', 'Wild Buffalo Megaways', 'https://d1b77e2r6mid5h.cloudfront.net/games/fcee2d0a_fcee2d0a_d25ccf82_183', NOW(), NOW()),
+('RubyPlay', 'Mad Hit Full Steam', 'https://d1b77e2r6mid5h.cloudfront.net/games/af2b3b42_af2b3b42_8081a79a_183', NOW(), NOW()),
+('Slotmill', 'Fortune Pandas', 'https://d1b77e2r6mid5h.cloudfront.net/games/52ff81a1_52ff81a1_61b4cf78_183', NOW(), NOW());	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
