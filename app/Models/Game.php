@@ -3,11 +3,22 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Game extends Model
 {
-   protected $fillable = ['provider','name', 'image_url'];
+    // Fields that can be mass-assigned
+    protected $fillable = [   
+        'provider',
+        'name',
+        'image_url',
+    ];
 
+    /**
+     * Relationship: a game can have many predictions
+     */
+    public function predictions(): HasMany
+    {
+        return $this->hasMany(GamePrediction::class);
+    }
 }

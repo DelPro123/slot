@@ -9,6 +9,7 @@ use App\Models\Game;
 
 class PredictColorGame extends Command
 {
+    // Command signature and description
     protected $signature = 'games:predict-color';
     protected $description = 'Assign 10 random games to a single color (6AM & 6PM UK time)';
 
@@ -39,9 +40,11 @@ class PredictColorGame extends Command
             return;
         }
 
+        // Select a random color and 10 random games
         $color = collect(['red', 'green', 'orange'])->random();
         $selectedGames = Game::inRandomOrder()->limit(10)->get();
 
+        // Create predictions for the selected games
         foreach ($selectedGames as $game) {
             GamePrediction::create([
                 'game_id' => $game->id,
@@ -50,7 +53,8 @@ class PredictColorGame extends Command
             ]);
         }
 
+        // Log the successful prediction creation
         $this->info("Prediction created for $slot slot at $ukNow with color: $color.");
+        $this->info("✅ games:predict-color executed at " . now());
     }
 }
-

@@ -1,6 +1,6 @@
 @use 'colorgame';
 @use 'gamelist';
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 $primary-color: #0D1121;
 $font-color: #ffffff;
@@ -12,6 +12,7 @@ $text-size: 16px;
 body{
     background-color: $primary-color;
     padding: 20px;
+    font-family: "Roboto", sans-serif;
 }
 
 h1{

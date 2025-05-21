@@ -46,8 +46,8 @@ function GamesList() {
       </div>
 
       {/* Games Grid */}
-      <div className="d-flex">
-        <div className="row-12 row-cols g-5 d-flex justify-content-center align-item-center">
+      <div className="d-flex mt-5">
+        <div className="row row-cols g-5 d-flex justify-content-center align-item-center">
           {filteredGames.map((game) => (
             <div key={game.id} className="col affliate-link">
               <a className='underline' href='https://chinluckgames.com/wD74mscL?aff_click_id=subid&aff_id=1146'>
@@ -55,7 +55,7 @@ function GamesList() {
                   <img
                     src={game.image_url || '/placeholder-game.png'}
                     alt={game.name}
-                    className="card-img-top rounded"
+                    className="card-img-top  text-center"
                   />
                   <div className="card-body p-2">
                     <p className="card-text small mb-1 text-truncate">{game.provider}</p>

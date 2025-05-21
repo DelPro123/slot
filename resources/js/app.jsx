@@ -22,10 +22,10 @@ ReactDOM.createRoot(document.getElementById('app')).render(
             <CountdownPage/>
         </div>
         <div className='row'>
-            <div className='col'>
+            <div className='col-lg-9 col-sm-12'>
                 <ColorGame/>
             </div>
-            <div className='col-3'>
+            <div className='col-lg-3 col-sm-12'>
                 <PredictionHistory/>
             </div>
         </div>
