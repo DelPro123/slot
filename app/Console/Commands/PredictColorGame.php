@@ -9,27 +9,26 @@ use App\Models\Game;
 
 class PredictColorGame extends Command
 {
-    // Command signature and description
     protected $signature = 'games:predict-color';
-    protected $description = 'Assign 10 random games to a single color (6AM & 6PM UK time)';
+    protected $description = 'Assign 10 random games to each of 3 colors (green, red, orange) at 6AM & 6PM UK time';
 
     public function handle()
     {
         $ukNow = Carbon::now('Europe/London');
         $hour = $ukNow->hour;
 
-        // Define slot and corresponding start/end hours
+        // Determine time slot and range
         if ($hour >= 0 && $hour < 12) {
             $slot = '6AM';
             $startHour = 6;
-            $endHour = 11;  // 6AM to 11:59AM
+            $endHour = 11;
         } else {
             $slot = '6PM';
             $startHour = 18;
-            $endHour = 23;  // 6PM to 11:59PM
+            $endHour = 23;
         }
 
-        // Check if a prediction exists in this slot today
+        // Prevent duplicate predictions in the same slot
         $existing = GamePrediction::whereBetween('predicted_at', [
             $ukNow->copy()->startOfDay()->addHours($startHour),
             $ukNow->copy()->startOfDay()->addHours($endHour)->endOfHour(),
@@ -40,21 +39,32 @@ class PredictColorGame extends Command
             return;
         }
 
-        // Select a random color and 10 random games
-        $color = collect(['red', 'green', 'orange'])->random();
-        $selectedGames = Game::inRandomOrder()->limit(10)->get();
+        // Get 30 unique random games
+        $totalGamesNeeded = 30;
+        $availableGames = Game::inRandomOrder()->limit($totalGamesNeeded)->get();
 
-        // Create predictions for the selected games
-        foreach ($selectedGames as $game) {
-            GamePrediction::create([
-                'game_id' => $game->id,
-                'color' => $color,
-                'predicted_at' => $ukNow,
-            ]);
+        if ($availableGames->count() < $totalGamesNeeded) {
+            $this->error("Not enough games available. Need at least $totalGamesNeeded.");
+            return;
         }
 
-        // Log the successful prediction creation
-        $this->info("Prediction created for $slot slot at $ukNow with color: $color.");
-        $this->info("✅ games:predict-color executed at " . now());
+        $colors = ['red', 'green', 'orange'];
+
+        // Assign 10 random games per color
+        foreach ($colors as $index => $color) {
+            $gamesForColor = $availableGames->slice($index * 10, 10);
+
+            foreach ($gamesForColor as $game) {
+                GamePrediction::create([
+                    'game_id' => $game->id,
+                    'color' => $color,
+                    'predicted_at' => $ukNow,
+                ]);
+            }
+
+            $this->info("Assigned 10 games to color: $color.");
+        }
+
+        $this->info("Prediction created for $slot slot at $ukNow.");
     }
 }
