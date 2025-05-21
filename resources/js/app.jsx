@@ -29,7 +29,6 @@ ReactDOM.createRoot(document.getElementById('app')).render(
                 <PredictionHistory/>
             </div>
         </div>
-        <h2>Games</h2>
         <div className='row'>
             <GamesList/>
         </div>

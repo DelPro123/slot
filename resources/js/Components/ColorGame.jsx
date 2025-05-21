@@ -20,21 +20,37 @@ function ColorGame() {
       .catch(err => console.error('Error fetching games:', err));
   }, []);
 
-  if (!prediction) return (
-    <p className="p-4 text-center">No prediction yet.</p>
-  );
+  if (!prediction) {
+    return (
+      <p className="p-4 text-center">No prediction yet.</p>
+    );
+  }
 
   const renderGames = (color) => (
-    <div className={`${getBgColor(color)} p-3 rounded text-white`}>
-      <h3 className="d-inline">{capitalize(color)}</h3>
-      <span className="ms-2 fw-semibold">{getWinrate(color)}</span>
+    <div className={`${getBgColor(color)} p-3 rounded text-center text-white`}>
+      {/* <h3 className="d-inline">{capitalize(color)}</h3> */}
+     <h2 className="d-inline">{getWinrate(color)}</h2>
+      <h3 className="ms-2 fw-semibold">Winning Rate</h3>
 
+      {/* Progress Bar */}
+      <div className="progress mb-3 mt-2" style={{ height: '2rem' }}>
+        <div
+          className={`progress-bar progress-bar-striped ${getProgressColor(color)}`}
+          role="progressbar"
+          style={{ width: `${getWinrateValue(color)}%` }}
+          aria-valuenow={getWinrateValue(color)}
+          aria-valuemin="0"
+          aria-valuemax="100"
+        />
+      </div>
+
+      {/* Prediction Timestamp & Games */}
       {prediction.color === color && (
         <>
           <p className="mt-2">
             Prediction at: {new Date(prediction.timestamp).toLocaleString()} ({capitalize(color)})
           </p>
-          <div className="d-flex flex-wrap gap-3 mt-3">
+          <div className="d-flex flex-wrap gap-3 mt-3 justify-content-center">
             {games.map(({ game }) => (
               <div key={game.id} className="text-center" style={{ width: '120px' }}>
                 <img
@@ -52,7 +68,22 @@ function ColorGame() {
     </div>
   );
 
+  // Background color for card
   const getBgColor = (color) => {
+    switch (color) {
+      case 'red':
+        return 'bg-red-400';
+      case 'green':
+        return 'bg-green-400';
+      case 'orange':
+        return 'bg-orange-400';
+      default:
+        return 'bg-secondary';
+    }
+  };
+
+  // Progress bar color
+  const getProgressColor = (color) => {
     switch (color) {
       case 'red':
         return 'bg-danger';
@@ -61,20 +92,35 @@ function ColorGame() {
       case 'orange':
         return 'bg-warning';
       default:
+        return 'bg-secondary';
+    }
+  };
+
+  // Winrate label
+  const getWinrate = (color) => {
+    switch (color) {
+      case 'red':
+        return '10% - 40%';
+      case 'green':
+        return '80% - 98%';
+      case 'orange':
+        return '50% - 70%';
+      default:
         return '';
     }
   };
 
-  const getWinrate = (color) => {
+  // Winrate value for progress bar
+  const getWinrateValue = (color) => {
     switch (color) {
       case 'red':
-        return '10% - 40% Winrate';
+        return 40;
       case 'green':
-        return '80% - 98% Winrate';
+        return 98;
       case 'orange':
-        return '50% - 70% Winrate';
+        return 70;
       default:
-        return '';
+        return 0;
     }
   };
 

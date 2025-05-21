@@ -1,11 +1,12 @@
 @use 'colorgame';
 @use 'gamelist';
 
+
 $primary-color: #0D1121;
 $font-color: #ffffff;
 $h1-size: 63px;
 $h2-size: 43px;
-$h3-size: 32px;
+$h3-size: 25px;
 $text-size: 16px;
 
 body{
@@ -22,6 +23,17 @@ h2{
     font-size: $h2-size;
 }
 h3{
-     color: #0D1121;
-    font-size: $h2-size;
+    color: #ffffff;
+    font-size: $h3-size;
+}
+p{
+    color: #ffffff;
+}
+
+.progress{
+    border: 3px solid #fff;
+}
+
+.text-black{
+    color: #0D1121 !important;
 }

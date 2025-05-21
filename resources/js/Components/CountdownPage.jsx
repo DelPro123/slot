@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+const Logo = 'https://chinchincasino.com/static/img/chincasino/logo/casino_logo.webp?v=1'
+
 function CountdownTimer() {
   const [targetTime, setTargetTime] = useState(null);
   const [timeLeft, setTimeLeft] = useState('');
@@ -42,14 +44,13 @@ function CountdownTimer() {
   }, [targetTime]);
 
   return (
-    <div className='row d-flex align-items-center'>
-        <h1>Chinchin Casino Prediction</h1>
-        <div className='d-flex d-inline'>
-         <h2>Next Prediction:
-         <span>{timeLeft || 'Loading...'}</span>
-         </h2>
+    <div className='row d-flex align-items-center px-3 text-center'>
+        <div className='d-inline'>
+            <img src={Logo} alt="Logo" />
+              <h2>Next Prediction:
+            <span>{timeLeft || 'Loading...'}</span>
+            </h2>
         </div>
-          
     </div>
    
   );

@@ -66,7 +66,7 @@ const PredictionHistory = () => {
                       className="img-fluid rounded mb-2"
                       style={{ height: '80px', objectFit: 'cover' }}
                     />
-                    <p className="fw-medium text-truncate">
+                    <p className="fw-medium text-truncate text-black">
                       {prediction.game.name}
                     </p>
                   </div>

@@ -1,0 +1,20 @@
+.card-img-top{
+   height: auto;
+   width:  100%;
+   
+}
+
+.affliate-link {
+  
+  display: inline-block; // Needed for transform to work reliably
+  transition: transform 0.3s ease; // Smooth animation
+ margin: 5px;
+
+  .underline{
+   text-decoration: none;
+  }
+
+  &:hover {
+    transform: scale(1.03);
+  }
+}
