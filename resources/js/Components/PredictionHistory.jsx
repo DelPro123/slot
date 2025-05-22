@@ -11,7 +11,8 @@ const PredictionHistory = () => {
         .then(res => {
           if (res.data && typeof res.data === 'object') {
             const grouped = Object.entries(res.data)
-              .sort((a, b) => new Date(b[0]) - new Date(a[0])); // Newest first
+              .sort((a, b) => new Date(b[0]) - new Date(a[0]))
+              .slice(1); // 🟢 Skip the newest prediction
             setPredictions(grouped);
             setLastUpdated(new Date());
           } else {
@@ -24,10 +25,10 @@ const PredictionHistory = () => {
         });
     };
 
-    fetchHistory(); // Load once
-    const interval = setInterval(fetchHistory, 5000); // Refresh every 5 seconds
+    fetchHistory(); // Load initially
+    const interval = setInterval(fetchHistory, 1000); // Refresh every 5 seconds
 
-    return () => clearInterval(interval); // Cleanup on unmount
+    return () => clearInterval(interval); // Cleanup
   }, []);
 
   if (!Array.isArray(predictions) || predictions.length === 0) {
@@ -46,10 +47,9 @@ const PredictionHistory = () => {
           const formattedDate = new Date(timestamp).toLocaleString('en-GB', {
             dateStyle: 'short',
             timeStyle: 'short',
-            hour12: true, // Show AM/PM
+            hour12: true,
           });
 
-          // Group games by color
           const groupedByColor = games.reduce((acc, pred) => {
             if (!acc[pred.color]) acc[pred.color] = [];
             acc[pred.color].push(pred);

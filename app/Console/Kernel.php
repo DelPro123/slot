@@ -12,30 +12,30 @@ class Kernel extends ConsoleKernel
         PredictColorGame::class,
     ];
 
-    protected function schedule(Schedule $schedule)
+    protected function schedule(Schedule $schedule):void
     {
-        // Production schedule (UK time)
-        $schedule->command('games:predict-color')
-            ->timezone('Europe/London')
-            ->dailyAt('1:00'); // 1PM UK
+        // // Production schedule (UK time)
+        //  $schedule->command('games:predict-color')
+        //     ->timezone('Europe/London')
+        //     ->dailyAt('1:00'); // 1PM UK
 
-        $schedule->command('games:predict-color')
-            ->timezone('Europe/London')
-            ->dailyAt('16:00'); // 4PM UK
+        //  $schedule->command('games:predict-color')
+        //      ->timezone('Europe/London')
+        //      ->dailyAt('16:00'); // 4PM UK
 
-        $schedule->command('games:predict-color')
-            ->timezone('Europe/London')
-            ->dailyAt('20:00'); // 8PM UK
+        //  $schedule->command('games:predict-color')
+        //      ->timezone('Europe/London')
+        //      ->dailyAt('20:00'); // 8PM UK
 
-        // // Hidden test schedule: runs every minute only in local/dev environments
-        // if (app()->environment(['local', 'development', 'testing'])) {
-        //     $schedule->command('games:predict-color')
-        //         ->timezone('Europe/London')
-        //         ->everyMinute(); // Test frequency
-        // }
-    }
+        // Hidden test schedule: runs every minute only in local/dev environments
+     if (app()->environment(['local', 'development', 'testing'])) {
+            $schedule->command('games:predict-color')
+                 ->timezone('Europe/London')
+                 ->everyMinute(); // Test frequency
+              }
+     }
 
-    protected function commands()
+    protected function commands():void
     {
         $this->load(__DIR__.'/Commands');
         require base_path('routes/console.php');

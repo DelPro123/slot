@@ -47,9 +47,9 @@ function CountdownTimer() {
     <div className='row d-flex align-items-center px-3 text-center'>
       <div className='d-inline'>
         <img src={Logo} alt="Logo" />
-        <h2>
-          Next Prediction: <span>{timeLeft || 'Loading...'}</span>
-        </h2>
+        <h1 className='heart'>
+          Next Prediction: <span className='color-red'>{timeLeft || 'Loading...'}</span>
+        </h1>
       </div>
     </div>
   );

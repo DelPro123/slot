@@ -1,32 +1,75 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import classNames from 'classnames';
 
 function ColorGame() {
-  const [gamesByColor, setGamesByColor] = useState({});
+  const [gamesByColor, setGamesByColor] = useState({ red: [], green: [], orange: [] });
   const [predictionTime, setPredictionTime] = useState(null);
 
   useEffect(() => {
-    axios.get('/api/latest-predicted-games')
-      .then(res => {
-        const grouped = { red: [], green: [], orange: [] };
-        res.data.forEach(item => {
-          if (grouped[item.color]) {
-            grouped[item.color].push(item.game);
+    const fetchData = () => {
+      axios.get('/api/latest-predicted-games')
+        .then(res => {
+          console.log('Fetched data:', res.data);
+
+          const grouped = { red: [], green: [], orange: [] };
+
+          res.data.forEach(item => {
+            if (item.color && grouped[item.color]) {
+              grouped[item.color].push(item.game);
+            }
+          });
+
+          setGamesByColor(grouped);
+
+          if (res.data.length > 0 && res.data[0].created_at) {
+            setPredictionTime(res.data[0].created_at);
           }
-        });
-        setGamesByColor(grouped);
-        if (res.data.length > 0) {
-          setPredictionTime(res.data[0].created_at);
-        }
-      })
-      .catch(err => console.error('Error fetching games:', err));
+        })
+        .catch(err => console.error('Error fetching games:', err));
+    };
+
+    fetchData(); // Initial fetch
+
+    const intervalId = setInterval(fetchData, 1000);
+
+    return () => clearInterval(intervalId); // Cleanup on unmount
   }, []);
+
+  const getBgColor = (color) => {
+    switch (color) {
+      case 'red': return 'bg-danger';
+      case 'green': return 'bg-success';
+      case 'orange': return 'bg-warning';
+      default: return 'bg-secondary';
+    }
+  };
+
+  const getProgressColor = (color) => getBgColor(color);
+
+  const getWinrate = (color) => {
+    switch (color) {
+      case 'red': return '10% - 40%';
+      case 'green': return '80% - 98%';
+      case 'orange': return '50% - 70%';
+      default: return '';
+    }
+  };
+
+  const getWinrateValue = (color) => {
+    switch (color) {
+      case 'red': return 40;
+      case 'green': return 98;
+      case 'orange': return 70;
+      default: return 0;
+    }
+  };
+
+  const capitalize = (text) => text.charAt(0).toUpperCase() + text.slice(1);
 
   const renderGames = (color) => (
     <div className={`${getBgColor(color)} p-3 rounded text-center text-white`}>
       <h2 className="d-inline">{getWinrate(color)}</h2>
-      <h3 className="ms-2 fw-semibold">Winning Rate</h3>
+      <h3 className="ms-2 fw-semibold">Winning Chance Rate</h3>
 
       <div className="progress mb-3 mt-2" style={{ height: '2rem' }}>
         <div
@@ -42,7 +85,12 @@ function ColorGame() {
       {gamesByColor[color] && gamesByColor[color].length > 0 ? (
         <>
           <p className="mt-2">
-            Prediction at: {new Date(predictionTime).toLocaleString()} ({capitalize(color)})
+            Prediction at: {new Date(predictionTime).toLocaleString('en-GB', {
+              timeZone: 'Europe/London',
+              dateStyle: 'short',
+              timeStyle: 'short',
+              hour12: true,
+            })} ({capitalize(color)})
           </p>
           <div className="d-flex flex-wrap gap-3 mt-3 justify-content-center">
             {gamesByColor[color].map((game) => (
@@ -66,49 +114,11 @@ function ColorGame() {
     </div>
   );
 
-  const getBgColor = (color) => {
-    switch (color) {
-      case 'red': return 'bg-red-400';
-      case 'green': return 'bg-green-400';
-      case 'orange': return 'bg-orange-400';
-      default: return 'bg-secondary';
-    }
-  };
-
-  const getProgressColor = (color) => {
-    switch (color) {
-      case 'red': return 'bg-danger';
-      case 'green': return 'bg-success';
-      case 'orange': return 'bg-warning';
-      default: return 'bg-secondary';
-    }
-  };
-
-  const getWinrate = (color) => {
-    switch (color) {
-      case 'red': return '10% - 40%';
-      case 'green': return '80% - 98%';
-      case 'orange': return '50% - 70%';
-      default: return '';
-    }
-  };
-
-  const getWinrateValue = (color) => {
-    switch (color) {
-      case 'red': return 40;
-      case 'green': return 98;
-      case 'orange': return 70;
-      default: return 0;
-    }
-  };
-
-  const capitalize = (text) => text.charAt(0).toUpperCase() + text.slice(1);
-
   return (
     <div className="row g-3">
-      <div className="col-12 col-md-4">{renderGames('red')}</div>
-      <div className="col-12 col-md-4">{renderGames('green')}</div>
-      <div className="col-12 col-md-4">{renderGames('orange')}</div>
+      <div className="col-lg col-sm-12 ">{renderGames('red')}</div>
+      <div className="col-lg col-sm-12">{renderGames('green')}</div>
+      <div className="col-lg col-sm-12">{renderGames('orange')}</div>
     </div>
   );
 }

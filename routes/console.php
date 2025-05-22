@@ -1,8 +1,24 @@
 <?php
 
-use Illuminate\Foundation\Inspiring;
-use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Schedule;
 
-Artisan::command('inspire', function () {
-    $this->comment(Inspiring::quote());
-})->purpose('Display an inspiring quote');
+// // Main schedule in UK time
+//  Schedule::command('games:predict-color')
+//     ->timezone('Europe/London')
+//     ->dailyAt('01:00'); // 1AM UK
+
+//  Schedule::command('games:predict-color')
+//     ->timezone('Europe/London')
+//     ->dailyAt('7:00'); // 4PM UK
+
+//  Schedule::command('games:predict-color')
+//      ->timezone('Europe/London')
+//     ->dailyAt('20:00'); // 8PM UK
+
+//Optional: for development/testing, run every minute
+if (app()->environment(['local', 'development', 'testing'])) {
+    Schedule::command('games:predict-color')
+        ->timezone('Europe/London')
+        ->everyMinute();
+}
+

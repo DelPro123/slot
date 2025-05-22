@@ -32,7 +32,7 @@ function GamesList() {
     
     <div className="container py-4" style={{ backgroundColor: 'transparent' }}>
       <div className='d-flex d-inline'>
-         <h2>Games</h2>
+         <h2> All Games </h2>
           {/* Search Bar */}
           <div className="mb-3 text-center">
             <input
