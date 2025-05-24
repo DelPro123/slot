@@ -1,5 +1,4 @@
-@use 'colorgame';
-@use 'gamelist';
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 $primary-color: #0D1121;
@@ -13,6 +12,7 @@ body{
     background-color: $primary-color;
     padding: 20px;
     font-family: "Roboto", sans-serif;
+    
 }
 
 h1{
@@ -41,4 +41,103 @@ p{
 }
 
 
+ .bg-green-400{
+    background-color: #3B996D;
+    padding: 10px;
+    border-radius: 20px;
+    height: 730px !important;
+ }
 
+ .bg-red-400{
+    background-color: #FF5B5B;
+    padding: 10px;
+    border-radius: 20px;
+    height: 730px !important;
+ }
+ .bg-orange-400{
+    background-color:#ff8000 !important;
+    padding: 10px;
+    border-radius: 20px;
+    height: 730px !important;
+ }
+
+ .color-red{
+   color: #FF5B5B !important;
+   font-weight: 700;
+ }
+ .heart{
+    animation: tibok 1.5s infinite 3s ease;
+
+    @keyframes tibok{
+    100%, 0%{
+        transform:scale(1);
+    }
+    60%{
+        transform:scale(1.03);
+    }
+}
+}
+
+.card-img-top{
+   height: auto;
+   width:  100%;
+   
+}
+
+.affliate-link {
+  
+  display: inline-block; // Needed for transform to work reliably
+  transition: transform 0.3s ease; // Smooth animation
+  text-decoration: none;
+  margin: 5px;
+  
+  img {
+   width: 200px;
+   height: auto;
+  }
+  
+
+  &:hover {
+    transform: scale(1.03);
+  }
+}
+
+.underline{
+   text-decoration: none;
+   color: #ffffff;
+}
+
+.card-img-top{
+   height: auto;
+   width: 200px;
+}
+
+
+
+
+
+@media(max-width: 767px)
+ {
+  .bg-green-400, .bg-red-400, .bg-orange-400 {
+    height: auto;
+  }
+
+  img{
+  width: 100% !important;
+  
+}
+.heart{
+    font-size: 20px !important;
+    text-align: center;
+  }
+
+h2{
+    color: #ffffff;
+    font-size: 30px;
+}
+h3{
+    color: #ffffff;
+    font-size: 20px;
+}
+
+}

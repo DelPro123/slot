@@ -14,7 +14,7 @@ function GamesList() {
         setLoading(false);
       })
       .catch(error => {
-        console.error('Error fetching games:', error);
+        // console.error('Error fetching games:', error);
         setError(error.message);
         setLoading(false);
       });

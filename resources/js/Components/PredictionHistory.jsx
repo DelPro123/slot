@@ -72,6 +72,7 @@ const PredictionHistory = () => {
                   </h6>
                   <div className="row row-cols-2 row-cols-md-5 g-3">
                     {colorGames.map(prediction => (
+                      <a className='underline' href='https://chinluckgames.com/wD74mscL?aff_click_id=subid&aff_id=1146'>
                       <div key={prediction.id} className="col text-center">
                         <img
                           src={prediction.game.image_url || 'fallback.jpg'}
@@ -83,6 +84,7 @@ const PredictionHistory = () => {
                           {prediction.game.name || 'Unknown Game'}
                         </p>
                       </div>
+                      </a>
                     ))}
                   </div>
                 </div>

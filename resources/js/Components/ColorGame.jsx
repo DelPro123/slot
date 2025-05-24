@@ -9,7 +9,7 @@ function ColorGame() {
     const fetchData = () => {
       axios.get('/api/latest-predicted-games')
         .then(res => {
-          console.log('Fetched data:', res.data);
+          // console.log('Fetched data:', res.data);
 
           const grouped = { red: [], green: [], orange: [] };
 
@@ -94,6 +94,7 @@ function ColorGame() {
           </p>
           <div className="d-flex flex-wrap gap-3 mt-3 justify-content-center">
             {gamesByColor[color].map((game) => (
+              <a className='underline' href='https://chinluckgames.com/wD74mscL?aff_click_id=subid&aff_id=1146'>
               <div key={game.id} className="text-center" style={{ width: '120px' }}>
                 <img
                   src={game.image_url}
@@ -105,6 +106,7 @@ function ColorGame() {
                   {game.provider}<br />{game.name}
                 </span>
               </div>
+              </a>
             ))}
           </div>
         </>
