@@ -14,11 +14,11 @@ class PredictColorGame extends Command
 
 //     public function handle()
 //     {
-//         // Get current time in UK timezone
+//         Get current time in UK timezone
 //         $ukNow = Carbon::now('Europe/London');
 //         $minute = $ukNow->format('Y-m-d H:i'); // Format to minute level to ensure uniqueness for each minute
 
-//         // Check if prediction already exists for the current minute
+//         Check if prediction already exists for the current minute
 //         $start = $ukNow->copy()->startOfMinute();
 //         $end = $ukNow->copy()->endOfMinute();
 
@@ -29,7 +29,7 @@ class PredictColorGame extends Command
 //             return;
 //         }
 
-//         // Fetch 30 unique random games
+//         Fetch 30 unique random games
 //         $games = Game::inRandomOrder()->limit(30)->get();
 
 //         if ($games->count() < 30) {
@@ -39,7 +39,7 @@ class PredictColorGame extends Command
 
 //         $colors = ['red', 'green', 'orange'];
 
-//         // Assign 10 games to each color
+//         Assign 10 games to each color
 //         foreach ($colors as $index => $color) {
 //             $subset = $games->slice($index * 10, 10);
 
